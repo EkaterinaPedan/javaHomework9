@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
 
+
+
     @Test
 
     public void shouldSetVolume() {
@@ -13,7 +15,7 @@ public class RadioTest {
         rad.setCurrentVolume(16);
 
         int expected = 16;
-        int actual = rad.currentVolume;
+        int actual = rad.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -110,7 +112,7 @@ public class RadioTest {
         rad.setCurrentRadioStation(5);
 
         int expected = 5;
-        int actual = rad.currentRadioStation;
+        int actual = rad.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
     }
