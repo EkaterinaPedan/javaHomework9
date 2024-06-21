@@ -3,29 +3,41 @@ package ru.netology;
 public class Radio {
     private int currentVolume;
     private int currentRadioStation;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int numberOfStations = 10;
+    private int maxStation = numberOfStations - 1;
+    private int minStation = 0;
+
+    public Radio() {
+    }
+
+    public Radio(int numberOfStations) {
+        this.maxStation = numberOfStations - 1;
+    }
 
     public int getCurrentVolume() {
         return currentVolume;
     }
 
     public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
+        if (newCurrentVolume < minVolume) {
             return;
         }
-        if (newCurrentVolume > 100) {
+        if (newCurrentVolume > maxVolume) {
             return;
         }
         currentVolume = newCurrentVolume;
     }
 
     public void increaseVolume() {
-        if (getCurrentVolume() < 100) {
+        if (getCurrentVolume() < maxVolume) {
             setCurrentVolume(getCurrentVolume() + 1);
         }
     }
 
     public void decreaseVolume() {
-        if (getCurrentVolume() > 0) {
+        if (getCurrentVolume() > minVolume) {
             setCurrentVolume(getCurrentVolume() - 1);
         }
     }
@@ -35,26 +47,26 @@ public class Radio {
     }
 
     public void setCurrentRadioStation(int newCurrentRadioStation) {
-        if (newCurrentRadioStation < 0) {
+        if (newCurrentRadioStation < minStation) {
             return;
         }
-        if (newCurrentRadioStation > 9) {
+        if (newCurrentRadioStation > maxStation) {
             return;
         }
         currentRadioStation = newCurrentRadioStation;
     }
 
     public void nextStation() {
-        if (getCurrentRadioStation() == 9) {
-            setCurrentRadioStation(0);
+        if (getCurrentRadioStation() == maxStation) {
+            setCurrentRadioStation(minStation);
         } else {
             setCurrentRadioStation(getCurrentRadioStation() + 1);
         }
     }
 
     public void prevStation() {
-        if (getCurrentRadioStation() == 0) {
-            setCurrentRadioStation(9);
+        if (getCurrentRadioStation() == minStation) {
+            setCurrentRadioStation(maxStation);
         } else {
             setCurrentRadioStation(getCurrentRadioStation() - 1);
         }
